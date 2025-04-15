@@ -5,6 +5,8 @@
 // - Rendere l’esercizio responsive, mandando a capo le card
 // - Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membro sulla pagina.
 
+const cardSection = document.getElementById("card-section");
+
 const teamMembers = [
   {
     name: "Marco Bianchi",
@@ -43,3 +45,30 @@ const teamMembers = [
     img: "img/female3.png",
   },
 ];
+
+// todo - Funzione che genera una card
+function generateCard(name, role, email, img) {
+  return `
+       <div class="card bg-dark my-3">
+        <div class="card-image py-4">
+          <img src="${img}" alt="female1" />
+        </div>
+        <div class="card-text">
+          <h4 class="text-light">${name}</h4>
+          <p class="text-light">${role}</p>
+          <p class="text-info">${email}</p>
+        </div>
+        </div>
+
+  `;
+}
+
+// todo - HTML
+
+let newCardsHtml = ``;
+for (let i = 0; i < teamMembers.length; i++) {
+  const currentMember = teamMembers[i];
+  const { name, role, email, img } = currentMember;
+  newCardsHtml += generateCard(name, role, email, img);
+}
+cardSection.innerHTML = newCardsHtml;
