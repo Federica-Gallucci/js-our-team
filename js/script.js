@@ -5,7 +5,7 @@
 // - Rendere l’esercizio responsive, mandando a capo le card
 // - Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membro sulla pagina.
 
-const cardSection = document.getElementById("card-section");
+const cardContainer = document.getElementById("card-container");
 
 const teamMembers = [
   {
@@ -49,18 +49,34 @@ const teamMembers = [
 // todo - Funzione che genera una card
 function generateCard(name, role, email, img) {
   return `
-       <div class="card bg-dark my-3">
-        <div class="card-image py-4">
-          <img src="${img}" alt="female1" />
-        </div>
-        <div class="card-text">
-          <h4 class="text-light">${name}</h4>
-          <p class="text-light">${role}</p>
-          <p class="text-info">${email}</p>
-        </div>
+
+
+        <div class="my-card my-3 bg-dark d-flex ">
+          <div class="card-image">
+            <img src="${img}" alt="female1" />
+          </div>
+          <div class="card-text p-3">
+            <h4 class="text-light">${name}</h4>
+            <p class="text-light">${role}</p>
+            <p class="text-info">${email}</p>
+          </div>
         </div>
 
+
   `;
+}
+
+{
+  /* <div class="my-card bg-dark  d-flex my-3">
+<div class="card-image ">
+ <img src="${img}" alt="female1" />
+</div>
+<div class="card-text px-2">
+  <h4 class="text-light">${name}</h4>
+  <p class="text-light">${role}</p>
+  <p class="text-info">${email}</p>
+</div>
+</div> */
 }
 
 // todo - HTML
@@ -71,4 +87,4 @@ for (let i = 0; i < teamMembers.length; i++) {
   const { name, role, email, img } = currentMember;
   newCardsHtml += generateCard(name, role, email, img);
 }
-cardSection.innerHTML = newCardsHtml;
+cardContainer.innerHTML = newCardsHtml;
