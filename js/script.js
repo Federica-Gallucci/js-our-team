@@ -1,11 +1,16 @@
 // Dato un array di oggetti rappresentante un team di un’azienda,
 //  creare una pagina dedicata in cui mostrare una card per ciascun componente.
-// (trovate l’array del team all’interno della cartella in allegato)
+
 // ? Bonus
 // - Rendere l’esercizio responsive, mandando a capo le card
-// - Aggiungere un form di agginta membri che permetta di visualizzare il nuovo membro sulla pagina.
+// - Aggiungere un form di aggiunta membri che permetta di visualizzare il nuovo membro sulla pagina.
 
 const cardContainer = document.getElementById("card-container");
+const newMember = document.getElementById("new-member");
+const newMemberImg = document.getElementById("new-member-img");
+const newMemberName = document.getElementById("new-member-name");
+const newMemberRole = document.getElementById("new-member-role");
+const newMemberEmail = document.getElementById("new-member-email");
 
 const teamMembers = [
   {
@@ -88,3 +93,16 @@ for (let i = 0; i < teamMembers.length; i++) {
   newCardsHtml += generateCard(name, role, email, img);
 }
 cardContainer.innerHTML = newCardsHtml;
+
+// todo - NEW MEMBER
+
+newMember.addEventListener("submit", (e) => {
+  e.defaultPrevented();
+
+  const img = newMemberImg.value;
+  const name = newMemberName.value;
+  const role = newMemberRole.value;
+  const email = newMemberEmail.value;
+  const newMemberAdd = { img, name, role, email };
+  teamMembers.push(newMemberAdd);
+});
