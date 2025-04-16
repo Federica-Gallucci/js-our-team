@@ -11,6 +11,7 @@ const newMemberImg = document.getElementById("new-member-img");
 const newMemberName = document.getElementById("new-member-name");
 const newMemberRole = document.getElementById("new-member-role");
 const newMemberEmail = document.getElementById("new-member-email");
+const createNewMember = document.getElementById("create-new-member");
 
 const teamMembers = [
   {
@@ -55,34 +56,35 @@ const teamMembers = [
 function generateCard(name, role, email, img) {
   return `
 
-
-        <div class="my-card my-3 bg-dark d-flex ">
-          <div class="card-image">
-            <img src="${img}" alt="female1" />
-          </div>
-          <div class="card-text p-3">
-            <h4 class="text-light">${name}</h4>
-            <p class="text-light">${role}</p>
-            <p class="text-info">${email}</p>
+         <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="team-card bg-dark d-flex my-3">
+            <div class="card-image">
+              <img src="${img}" alt="female1" class="card-img-top " />
+            </div>
+            <div class="card-text px-2">
+              <h4 class="text-light">${name}</h4>
+              <p class="text-light">${role}</p>
+              <p class="text-info">${email}</p>
+            </div>
           </div>
         </div>
 
+      </div>
 
   `;
 }
 
-{
-  /* <div class="my-card bg-dark  d-flex my-3">
-<div class="card-image ">
- <img src="${img}" alt="female1" />
-</div>
-<div class="card-text px-2">
-  <h4 class="text-light">${name}</h4>
-  <p class="text-light">${role}</p>
-  <p class="text-info">${email}</p>
-</div>
-</div> */
-}
+//   <div class="team-card bg-dark  d-flex my-3">
+// <div class="card-image ">
+//  <img src="${img}" alt="female1" />
+// </div>
+// <div class="card-text px-2">
+//   <h4 class="text-light">${name}</h4>
+//   <p class="text-light">${role}</p>
+//   <p class="text-info">${email}</p>
+// </div>
+// </div>
 
 // todo - HTML
 
@@ -97,7 +99,7 @@ cardContainer.innerHTML = newCardsHtml;
 // todo - NEW MEMBER
 
 newMember.addEventListener("submit", (e) => {
-  e.defaultPrevented();
+  e.preventDefault();
 
   const img = newMemberImg.value;
   const name = newMemberName.value;
